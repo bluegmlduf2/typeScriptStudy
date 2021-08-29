@@ -2,6 +2,7 @@
     "compilerOptions" : {     
       "target": "es5",     
       "module": "commonjs",  
+      "strictNullChecks": true //널타입을 엄격하게 체크해달라
     } 
 }
 
