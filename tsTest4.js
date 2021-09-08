@@ -104,3 +104,57 @@ console.log(찰스); //js전문가입니다
 StaticUser.skill = 'python';
 var 민수 = new StaticUser();
 console.log(민수); //python전문가입니다
+//숙제2
+var UserHomeWork = /** @class */ (function () {
+    function UserHomeWork() {
+    }
+    UserHomeWork.prototype.addOne = function (x) {
+        UserHomeWork.x += x;
+    };
+    UserHomeWork.prototype.printX = function () {
+        console.log(UserHomeWork.x);
+    };
+    UserHomeWork.x = 10;
+    UserHomeWork.y = 20;
+    return UserHomeWork;
+}());
+var userHomeWork = new UserHomeWork();
+userHomeWork.addOne(3); //이렇게 하면 x가 3 더해져야함
+userHomeWork.addOne(4); //이렇게 하면 x가 4 더해져야함
+userHomeWork.printX(); //이렇게 하면 콘솔창에 x값이 출력되어야함
+//숙제3
+var Square = /** @class */ (function () {
+    function Square(width, height, color) {
+        this.width = width;
+        this.height = height;
+        this.color = color;
+        this.initBodyElement();
+    }
+    Square.prototype.initBodyElement = function () {
+        var body = document.body;
+        //Body태그안에 다 지우고 div하나만 넣음
+        while (body.hasChildNodes()) {
+            //Narrowing 
+            if (body instanceof HTMLElement && body.firstChild) {
+                body.removeChild(body.firstChild);
+                continue;
+            }
+            break;
+        }
+        this.div = body.appendChild(document.createElement('div'));
+    };
+    Square.prototype.draw = function () {
+        var addDiv = document.createElement('div');
+        var x = Math.random() * window.innerHeight;
+        var y = Math.random() * window.innerWidth;
+        var stylestring = "position:absolute;top:" + x + "px;left:" + y + "px;height:40px;width:40px;background-color:" + this.color + ";";
+        addDiv.style.cssText = stylestring;
+        this.div.appendChild(addDiv);
+    };
+    return Square;
+}());
+var 네모 = new Square(30, 30, 'red');
+네모.draw();
+네모.draw();
+네모.draw();
+네모.draw();

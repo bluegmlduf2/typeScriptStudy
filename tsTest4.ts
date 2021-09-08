@@ -90,3 +90,68 @@ class User {
   StaticUser.skill = 'python';
   var 민수 = new StaticUser();
   console.log(민수);//python전문가입니다
+
+
+//숙제2
+class UserHomeWork {
+  private static x:Number = 10;
+  public static y:Number = 20;
+
+  addOne(x){
+    UserHomeWork.x+=x;
+  }
+
+  printX(){
+    console.log(UserHomeWork.x)
+  }
+}
+let userHomeWork=new UserHomeWork()
+userHomeWork.addOne(3) //이렇게 하면 x가 3 더해져야함
+userHomeWork.addOne(4) //이렇게 하면 x가 4 더해져야함
+userHomeWork.printX()  //이렇게 하면 콘솔창에 x값이 출력되어야함
+
+
+//숙제3
+class Square {
+  width:number
+  height:number
+  color:string
+  div:HTMLElement
+
+  constructor(width:number,height:number,color:string) {
+    this.width=width
+    this.height=height
+    this.color=color
+
+    this.initBodyElement()
+  }
+
+  initBodyElement(){
+    const body=document.body
+    //Body태그안에 다 지우고 div하나만 넣음
+    while ( body.hasChildNodes() ) {
+      //Narrowing 
+      if(body instanceof HTMLElement&&body.firstChild){
+        body.removeChild( body.firstChild );
+        continue
+      }
+      break
+    }
+    this.div=body.appendChild(document.createElement('div'))
+  }
+
+  draw(){
+    const addDiv=document.createElement('div')
+    const x:number=Math.random()*window.innerHeight;
+    const y:number=Math.random()*window.innerWidth;
+    const stylestring = `position:absolute;top:${x}px;left:${y}px;height:40px;width:40px;background-color:${this.color};`;
+		addDiv.style.cssText = stylestring;
+    this.div.appendChild(addDiv);
+  }  
+}
+
+let 네모 = new Square(30, 30, 'red');
+네모.draw()
+네모.draw()
+네모.draw()
+네모.draw()
