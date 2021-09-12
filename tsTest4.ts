@@ -155,3 +155,21 @@ let 네모 = new Square(30, 30, 'red');
 네모.draw()
 네모.draw()
 네모.draw()
+
+
+export type CarExport = {
+  wheel : number,
+  model : string
+}
+
+export interface BikeExport {
+  wheel : 2,
+  model : string
+}
+
+namespace DogNameSpace{
+  interface Dog{
+    name:string,
+    age:number
+  }
+}
